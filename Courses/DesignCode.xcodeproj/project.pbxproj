@@ -44,16 +44,6 @@
 		487738C827094C3B00424DF3 /* CourseSectionDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487738C627094C1400424DF3 /* CourseSectionDetail.swift */; };
 		487738CE27094E9300424DF3 /* LibraryContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487738CB27094E9300424DF3 /* LibraryContent.swift */; };
 		487738CF27094E9300424DF3 /* LibraryContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487738CB27094E9300424DF3 /* LibraryContent.swift */; };
-		487738D727094FCE00424DF3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487738D627094FCE00424DF3 /* WidgetKit.framework */; platformFilter = maccatalyst; };
-		487738D927094FCE00424DF3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487738D827094FCE00424DF3 /* SwiftUI.framework */; platformFilter = maccatalyst; };
-		487738DC27094FCE00424DF3 /* DesignCodeWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487738DB27094FCE00424DF3 /* DesignCodeWidget.swift */; };
-		487738DF27094FD200424DF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 487738DE27094FD200424DF3 /* Assets.xcassets */; };
-		487738E127094FD200424DF3 /* DesignCodeWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 487738DD27094FCE00424DF3 /* DesignCodeWidget.intentdefinition */; };
-		487738E227094FD200424DF3 /* DesignCodeWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 487738DD27094FCE00424DF3 /* DesignCodeWidget.intentdefinition */; };
-		487738E527094FD200424DF3 /* DesignCodeWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 487738D427094FCE00424DF3 /* DesignCodeWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		487738EA270950E500424DF3 /* CourseSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487738B12709459C00424DF3 /* CourseSection.swift */; };
-		487738EB2709510B00424DF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48CACD1E27054C9100488335 /* Assets.xcassets */; };
-		487738ED2709521700424DF3 /* CourseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4877388F270924EE00424DF3 /* CourseRow.swift */; };
 		48CACD2C27054C9100488335 /* DesignCodeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CACD1C27054C8E00488335 /* DesignCodeApp.swift */; };
 		48CACD2D27054C9100488335 /* DesignCodeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CACD1C27054C8E00488335 /* DesignCodeApp.swift */; };
 		48CACD2E27054C9100488335 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48CACD1D27054C8E00488335 /* ContentView.swift */; };
@@ -62,16 +52,6 @@
 		48CACD3127054C9100488335 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48CACD1E27054C9100488335 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		487738E327094FD200424DF3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 48CACD1727054C8E00488335 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 487738D327094FCE00424DF3;
-			remoteInfo = DesignCodeWidgetExtension;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		487738E927094FD200424DF3 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -79,7 +59,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				487738E527094FD200424DF3 /* DesignCodeWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,13 +86,8 @@
 		487738C427094A6E00424DF3 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		487738C627094C1400424DF3 /* CourseSectionDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseSectionDetail.swift; sourceTree = "<group>"; };
 		487738CB27094E9300424DF3 /* LibraryContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryContent.swift; sourceTree = "<group>"; };
-		487738D427094FCE00424DF3 /* DesignCodeWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DesignCodeWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		487738D627094FCE00424DF3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		487738D827094FCE00424DF3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		487738DB27094FCE00424DF3 /* DesignCodeWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignCodeWidget.swift; sourceTree = "<group>"; };
-		487738DD27094FCE00424DF3 /* DesignCodeWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = DesignCodeWidget.intentdefinition; sourceTree = "<group>"; };
-		487738DE27094FD200424DF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		487738E027094FD200424DF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48CACD1C27054C8E00488335 /* DesignCodeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignCodeApp.swift; sourceTree = "<group>"; };
 		48CACD1D27054C8E00488335 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		48CACD1E27054C9100488335 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,15 +97,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		487738D127094FCE00424DF3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				487738D927094FCE00424DF3 /* SwiftUI.framework in Frameworks */,
-				487738D727094FCE00424DF3 /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		48CACD2027054C9100488335 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -212,23 +177,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		487738DA27094FCE00424DF3 /* DesignCodeWidget */ = {
-			isa = PBXGroup;
-			children = (
-				487738DB27094FCE00424DF3 /* DesignCodeWidget.swift */,
-				487738DD27094FCE00424DF3 /* DesignCodeWidget.intentdefinition */,
-				487738DE27094FD200424DF3 /* Assets.xcassets */,
-				487738E027094FD200424DF3 /* Info.plist */,
-			);
-			path = DesignCodeWidget;
-			sourceTree = "<group>";
-		};
 		48CACD1627054C8E00488335 = {
 			isa = PBXGroup;
 			children = (
 				48CACD1B27054C8E00488335 /* Shared */,
 				48CACD2A27054C9100488335 /* macOS */,
-				487738DA27094FCE00424DF3 /* DesignCodeWidget */,
 				487738D527094FCE00424DF3 /* Frameworks */,
 				48CACD2427054C9100488335 /* Products */,
 			);
@@ -254,7 +207,6 @@
 			children = (
 				48CACD2327054C9100488335 /* DesignCode.app */,
 				48CACD2927054C9100488335 /* DesignCode.app */,
-				487738D427094FCE00424DF3 /* DesignCodeWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -271,23 +223,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		487738D327094FCE00424DF3 /* DesignCodeWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 487738E627094FD200424DF3 /* Build configuration list for PBXNativeTarget "DesignCodeWidgetExtension" */;
-			buildPhases = (
-				487738D027094FCE00424DF3 /* Sources */,
-				487738D127094FCE00424DF3 /* Frameworks */,
-				487738D227094FCE00424DF3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DesignCodeWidgetExtension;
-			productName = DesignCodeWidgetExtension;
-			productReference = 487738D427094FCE00424DF3 /* DesignCodeWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		48CACD2227054C9100488335 /* DesignCode (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48CACD3427054C9100488335 /* Build configuration list for PBXNativeTarget "DesignCode (iOS)" */;
@@ -300,7 +235,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				487738E427094FD200424DF3 /* PBXTargetDependency */,
 			);
 			name = "DesignCode (iOS)";
 			productName = "DesignCode (iOS)";
@@ -334,9 +268,6 @@
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
-					487738D327094FCE00424DF3 = {
-						CreatedOnToolsVersion = 13.0;
-					};
 					48CACD2227054C9100488335 = {
 						CreatedOnToolsVersion = 13.0;
 					};
@@ -360,21 +291,11 @@
 			targets = (
 				48CACD2227054C9100488335 /* DesignCode (iOS) */,
 				48CACD2827054C9100488335 /* DesignCode (macOS) */,
-				487738D327094FCE00424DF3 /* DesignCodeWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		487738D227094FCE00424DF3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				487738EB2709510B00424DF3 /* Assets.xcassets in Resources */,
-				487738DF27094FD200424DF3 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		48CACD2127054C9100488335 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,17 +315,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		487738D027094FCE00424DF3 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				487738DC27094FCE00424DF3 /* DesignCodeWidget.swift in Sources */,
-				487738EA270950E500424DF3 /* CourseSection.swift in Sources */,
-				487738E127094FD200424DF3 /* DesignCodeWidget.intentdefinition in Sources */,
-				487738ED2709521700424DF3 /* CourseRow.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		48CACD1F27054C9100488335 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -424,7 +334,6 @@
 				487738B62709459D00424DF3 /* Tutorial.swift in Sources */,
 				487738A6270943FC00424DF3 /* CloseButton.swift in Sources */,
 				487738BA2709459D00424DF3 /* Download.swift in Sources */,
-				487738E227094FD200424DF3 /* DesignCodeWidget.intentdefinition in Sources */,
 				48CACD2E27054C9100488335 /* ContentView.swift in Sources */,
 				48773890270924EE00424DF3 /* CourseRow.swift in Sources */,
 				48CACD2C27054C9100488335 /* DesignCodeApp.swift in Sources */,
@@ -463,74 +372,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		487738E427094FD200424DF3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 487738D327094FCE00424DF3 /* DesignCodeWidgetExtension */;
-			targetProxy = 487738E327094FD200424DF3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		487738E727094FD200424DF3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NRYEB3CVX3;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DesignCodeWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DesignCodeWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.telo.DesignCode.DesignCodeWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		487738E827094FD200424DF3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NRYEB3CVX3;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DesignCodeWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DesignCodeWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.telo.DesignCode.DesignCodeWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		48CACD3227054C9100488335 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -645,7 +487,6 @@
 		48CACD3527054C9100488335 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -676,7 +517,6 @@
 		48CACD3627054C9100488335 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -764,15 +604,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		487738E627094FD200424DF3 /* Build configuration list for PBXNativeTarget "DesignCodeWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				487738E727094FD200424DF3 /* Debug */,
-				487738E827094FD200424DF3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		48CACD1A27054C8E00488335 /* Build configuration list for PBXProject "DesignCode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
