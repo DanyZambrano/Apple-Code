@@ -1,6 +1,0 @@
-target 'FirebaseRemoteConfigApp' do
-  use_frameworks!
-
-  pod 'Firebase/RemoteConfig'
-
-end
