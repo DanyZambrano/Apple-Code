@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/****************************************************************************
+ Constants and Variables
+ 
+ let es para constantes
+ var es para variables
+ 
+ Nota: Constant and variable names can’t contain whitespace characters,
+ mathematical symbols, arrows, private-use Unicode scalar values, 
+ or line- and box-drawing characters. Nor can they begin with a number,
+ although numbers may be included elsewhere within the name
+****************************************************************************/
+
+var miVariable = 40
+miVariable = 50
+let miConstante = 42
+
+print("miVariable: ", miVariable)
+print("miConstante: ", miConstante)
+
+let maximumNumberOfLoginAttempts = 10
+var currentLoginAttempt = 0
+
+print("maximumNumberOfLoginAttempts: ", maximumNumberOfLoginAttempts)
+print("currentLoginAttempt: ", currentLoginAttempt)
+
+
+let x = 0.0, y = 0.0
+var z = 0.0
+print("x: \(x), y: \(y), z: \(z) ")
+
+
+
+/****************************************************************************
+ Type Annotations
+ 
+ Proveer un tipo de dato al momento de declarar una constante o variable.
+ Proveer el tipo de dato que puede almacenar.
+ ****************************************************************************/
+
+var welcomeMessage: String
+welcomeMessage = "Hello"
+print("welcomeMessage: ", welcomeMessage)
+
+var red, green, blue: Double
+red = 0.00
+green = 0.2
+blue = 0.3
+print("red: \(red), green: \(green), blue: \(blue) ")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
+ Unicode caracters
+ 
+ an international encoding standard for use with different languages and scripts, 
+ by which each letter, digit, or symbol is assigned a unique numeric value 
+ that applies across different platforms and programs.
+ ****************************************************************************/
+
+let π = 3.14159
+let 你好 = "你好世界"
+let 🐶🐮 = "dogcow"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
+ Integers, Float, Double, Numeric Literals
+ ****************************************************************************/
+
+let edad: Int = 90       //Integer
+let pi = 3.14159    //Float
+let notas = 19.01   //Double
+
+//Numeric Literals
+let decimalInteger = 17
+let binaryInteger = 0b10001      
+let octalInteger = 0o21           
+let hexadecimalInteger = 0x11    
+let oneMillion = 1_000_000
+print("oneMillion", oneMillion)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
+ Convertion
+ ****************************************************************************/
+
+let integerPi = Int(3.14159)
+let paraDouble = Double(3)
+let paraFloat = Float("3.01323") 
+let paraString = String(3.01323) 
+
+print("integerPi: ", integerPi)
+print("paraDouble: ", paraDouble)
+print("paraFloat: ", paraFloat)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
+ Type Aliases
+ Type aliases define an alternative name for an existing type.
+ ****************************************************************************/
+
+typealias AudioSample = UInt16
+var maxAmplitudeFound = AudioSample.min //(UInt16.min)
+print("maxAmplitudeFound: ", maxAmplitudeFound)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
+ Booleans
+ Boolean values are referred to as logical, 
+ because they can only ever be true or false
+ ****************************************************************************/
+
+let orangesAreOrange = true
+let elCieloEsAmarillo = false
+
+if (orangesAreOrange == false) {
+    print("es su color!")
+} else {
+    print("revise de nuevo el color!")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
+ Tuples
+ Tuples group multiple values into a single compound value
+ Tuples are particularly useful as the return values of functions. 
+ ****************************************************************************/
+
+let http404Error = (404, "Not Found")    //(Int, String)
+let (statusCode, statusMessage) = http404Error
+
+print("The status code is \(statusCode)")
+print("The status message is \(statusMessage)")
+
+let (justTheStatusCode, _) = http404Error
+print("The status code is \(justTheStatusCode)")
+    
+//Alternativa
+print("The status code is \(http404Error.0)")
+print("The status message is \(http404Error.1)")
+
+//tuple named
+let http200Status = (statusCode: 200, description: "OK")
+print("The status code is \(http200Status.statusCode)")
+print("The status message is \(http200Status.description)")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
+ Optionals
+ You use optionals in situations where a value may be absent. An optional 
+ represents two possibilities: Either there is a value, and you can unwrap 
+ the optional to access that value, or there isn’t a value at all.
+ ****************************************************************************/
+
+let possibleNumber = "123"
+let convertedNumber = Int(possibleNumber) // is inferred to be of type "Int?", or "optional Int"
+print("convertedNumber: ", convertedNumber)
+
+var serverResponseCode: Int? = 404
+print("serverResponseCode: ", serverResponseCode)
+
+var surveyAnswer: String?
+
+//Optional binding
+if let actualNumber = Int(possibleNumber) {
+    print("The string \"\(possibleNumber)\" has an integer value of \(actualNumber)")
+} else {
+    print("The string \"\(possibleNumber)\" couldn't be converted to an integer")
+}
+
+//Impicity Optionals
+let possibleString: String? = "An optional string."
+let forcedString: String = possibleString! 
+print("forcedString: ", forcedString)
+
+let assumedString: String! = "An implicitly unwrapped optional string."
+let implicitString: String = assumedString 
+print("implicitString: ", implicitString)
+
+
+
+
+/****************************************************************************
+ Basic Operators
+ An operator is a special symbol or phrase that you use to check, change, or combine values.
+ 
+ Operators are unary, binary, or ternary:
+ Unary operators operate on a single target (such as -a)
+ Binary operators operate on two targets (such as a + b) 
+ Ternary operators operate on three targets. The ternary conditional operator (a ? b : c).
+ ****************************************************************************/
+
+
+//Assignment Operator
+let b = 10
+var a = 5
+a = b
+
+//Arithmetic Operators
+let _addition = 1 + 2        // equals 3
+let _substraction = 5 - 3    // equals 2
+let _multiplication = 2 * 3  // equals 6
+let _division = 10.0 / 2.5   // equals 4.0
+
+//Remainder Operator
+let _remainder = 9 % 4    // equals 1
+
+/*
+ 9 |_4_
+ 1   2.25
+ */
+
+//Compound Assignment Operators
+var a1 = 1
+a1 += 2  //a1 = a1 + 2
+
+
+//Comparison Operators
+/*
+ Equal to (a == b)
+ Not equal to (a != b)
+ Greater than (a &gt; b)
+ Less than (a &lt; b)
+ Greater than or equal to (a &gt;= b)
+ Less than or equal to (a &lt;= b)
+ */
+
+1 == 1   // true because 1 is equal to 1
+2 != 1   // true because 2 isn't equal to 1
+2 &gt; 1    // true because 2 is greater than 1
+1 &lt; 2    // true because 1 is less than 2
+1 &gt;= 1   // true because 1 is greater than or equal to 1
+2 &lt;= 1   // false because 2 isn't less than or equal to 1
+
+
+let name = "juan"
+if name != "dany" {
+    print("hello, juan")
+} else {
+    print("I'm sorry \(name), but I don't recognize you")
+}
+
+(1, "zebra") &lt; (2, "apple")   // true because 1 is less than 2; "zebra" and "apple" aren't compared
+(3, "apple") &lt; (3, "bird")    // true because 3 is equal to 3, and "apple" is less than "bird"
+(4, "dog") == (4, "dog")      // true because 4 is equal to 4, and "dog" is equal to "dog"
+    
+
+
+//Ternary Conditional Operator
+// condicion ? Si : No
+//(a ? b : c)
+
+let contentHeight = 40
+let hasHeader = true
+let rowHeight = contentHeight + (hasHeader ? 50 : 20)
+print("rowHeight: ", rowHeight)
+
+
+
+
+//Nil-Coalescing Operator
+//The nil-coalescing operator (z ?? y) unwraps an optional a if it contains a value,
+//or returns a default value b if a is nil. 
+
+let defaultColorName = "red"
+var userDefinedColorName: String?   // defaults to nil
+
+var colorNameToUse = userDefinedColorName ?? defaultColorName
+print("colorNameToUse: ", colorNameToUse)
+
+
+
+//Range Operators
+//The closed range operator (a...b) defines a range that runs from a to b, and includes the values a and b. The value of a must not be greater than b.
+
+for index in 1...5 {
+    print("\(index) times 5 is \(index * 5)")
+}
+
+
+let names = ["Anna", "Alex", "Brian", "Jack"]
+let count = names.count
+for i in 0..&lt;count {
+    print("Person \(i + 1) is called \(names[i])")
+}
+
+
+for name in names[2...] {
+    print(name)
+}
+
+for name in names[...2] {
+    print(name)
+}
+
+for name in names[..&lt;2] {
+    print(name)
+}
+
+
+/****************************************************************************
+ Logical Operators
+ 
+ Logical operators modify or combine the Boolean logic values true and false. 
+ Logical NOT (!a)
+ Logical AND (a &amp;&amp; b)
+ Logical OR (a || b)
+
+ **************************************************************************/
+
+let allowedEntry = false
+if !allowedEntry {
+    print("ACCESS Granted")
+}
+
+
+let enteredDoorCode = true
+let passedRetinaScan = false
+if enteredDoorCode &amp;&amp; passedRetinaScan {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+
+
+let hasDoorKey = false
+let knowsOverridePassword = true
+if hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+
+
+if enteredDoorCode &amp;&amp; passedRetinaScan || hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+
+if (enteredDoorCode &amp;&amp; passedRetinaScan) || hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 9653}</string>
+			<key>OriginalContent</key>
+			<string>
+</string>
+			<key>OriginalRange</key>
+			<string>{0, 1}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>

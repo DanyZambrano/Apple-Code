@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/****************************************************************************
+ Generics
+ 
+ Generic code enables you to write flexible, reusable functions and types that
+ can work with any type, subject to requirements that you define. You can write
+ code that avoids duplication and expresses its intent in a clear, abstracted
+ manner.
+ 
+ Generics are one of the most powerful features of Swift, and much of the Swift
+ standard library is built with generic code. 
+ 
+ Nos permiten crear código que funciona con distintos tipos. Es decir, podemos
+ preparar nuestro código para que funcione con Int, String, etc.
+ ****************************************************************************/
+
+
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+var someInt = 3
+var anotherInt = 107
+swapTwoInts(&amp;someInt, &amp;anotherInt)
+print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+
+
+
+func swapTwoStrings(_ a: inout String, _ b: inout String) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+func swapTwoDoubles(_ a: inout Double, _ b: inout Double) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+
+
+
+
+func swapTwoValues&lt;T&gt;(_ a: inout T, _ b: inout T) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+var someInt1 = 3
+var anotherInt1 = 107
+swapTwoValues(&amp;someInt1, &amp;anotherInt1)
+
+var someString = "hello"
+var anotherString = "world"
+swapTwoValues(&amp;someString, &amp;anotherString)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*   Generic Types
+ 
+ In addition to generic functions, Swift enables you to define your 
+ own generic types. These are custom classes, structures, and 
+ enumerations that can work with any type, in a similar way to Array and Dictionary.*/
+
+
+struct IntStack {
+    var items: [Int] = []
+    mutating func push(_ item: Int) {
+        items.append(item)
+    }
+    mutating func pop() -&gt; Int {
+        return items.removeLast()
+    }
+}
+
+
+struct Stack&lt;Element&gt; {
+    var items: [Element] = []
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+    mutating func pop() -&gt; Element {
+        return items.removeLast()
+    }
+}
+
+
+var stackOfStrings = Stack&lt;String&gt;()
+stackOfStrings.push("uno")
+stackOfStrings.push("dos")
+stackOfStrings.push("tres")
+stackOfStrings.push("cuatro")
+
+
+
+
+
+
+
+
+
+
+//Extending a Generic Type
+extension Stack {
+    var topItem: Element? {
+        return items.isEmpty ? nil : items[items.count - 1]
+    }
+}
+
+if let topItem = stackOfStrings.topItem {
+    print("The top item on the stack is \(topItem).")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  Type Constraints
+ Type constraints specify that a type parameter must
+ inherit from a specific class, or conform to a particular
+ protocol or protocol composition. */
+
+
+
+
+func findIndex(ofString valueToFind: String, in array: [String]) -&gt; Int? {
+    for (index, value) in array.enumerated() {
+        if value == valueToFind {
+            return index
+        }
+    }
+    return nil
+}
+
+
+let strings = ["cat", "dog", "llama", "parakeet", "terrapin"]
+if let foundIndex = findIndex(ofString: "llama", in: strings) {
+    print("The index of llama is \(foundIndex)")
+}
+
+
+
+
+
+func findIndex&lt;T: Equatable&gt;(of valueToFind: T, in array:[T]) -&gt; Int? {
+    for (index, value) in array.enumerated() {
+        if value == valueToFind {
+            return index
+        }
+    }
+    return nil
+}
+
+let doubleIndex = findIndex(of: 9.3, in: [3.14159, 0.1, 0.25])
+let stringIndex = findIndex(of: "Andrea", in: ["Mike", "Malcolm", "Andrea"])
+
+
+
+
+
+
+
+
+
+
+//Contextual Where Clauses
+//Generic Subscripts
+//Opaque Types
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 3563}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{0, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>

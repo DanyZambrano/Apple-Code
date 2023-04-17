@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/****************************************************************************
+ Function
+ 
+ Functions are self-contained chunks of code that perform a specific task. 
+ You give a function a name that identifies what it does, and this name is
+ used to “call” the function to perform its task when needed. 
+****************************************************************************/
+
+
+//Defining and Calling Functions
+func hello() {
+    print("Hola")
+    return
+}
+
+func test() -&gt; String {
+    return "hello, world"
+}
+print(test())
+
+
+func greet_1(person: String, edad: Int) -&gt; String {
+    let greeting: String = "Hello, " + person + "!" + String(edad)
+    return greeting
+}
+print(greet_1(person: "Dany", edad: 42))
+
+
+func greet_2(person: String) -&gt; String  {
+    let greeting = "Hello, " + person + "!"
+    return greeting
+}
+print(greet_2(person: "Anna"))
+
+
+
+func greetAgain(person: String) -&gt; String {
+    return "Hello again, " + person + "!"
+}
+print(greetAgain(person: "Anna"))
+
+
+
+
+
+
+//Function Parameters and Return Values
+func greet(person: String, alreadyGreeted: Bool) -&gt; String {
+    if alreadyGreeted {
+        return greetAgain(person: person)
+    }
+    
+    return greet_2(person: person)
+    
+}
+print(greet(person: "Tim", alreadyGreeted: true))
+
+
+
+
+
+func printAndCount(string: String) -&gt; Int {
+    print(string)
+    print(string.count)
+    return string.count
+}
+
+func printWithoutCounting(string: String) {
+    let _ = printAndCount(string: string)
+}
+printAndCount(string: "hello, world")
+printWithoutCounting(string: "hello, world")
+
+
+
+
+
+
+
+//Functions with Multiple Return Values
+func minMax(array: [Int]) -&gt; (min: Int, max: Int) {
+    var currentMin = array[0]
+    var currentMax = array[0]
+    for value in array[1..&lt;array.count] {
+        if value &lt; currentMin {
+            currentMin = value
+        } else if value &gt; currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+}
+
+let bounds = minMax(array: [8, -6, 2, 109, 3, 71])
+print("min is \(bounds.min) and max is \(bounds.max)")
+
+
+
+
+
+
+
+
+
+
+
+//Default Parameter Values
+func someFunction(parameterWithoutDefault: Int, parameterWithDefault: Int = 12) {
+    // If you omit the second argument when calling this function, then
+    // the value of parameterWithDefault is 12 inside the function body.
+}
+someFunction(parameterWithoutDefault: 3, parameterWithDefault: 6)
+someFunction(parameterWithoutDefault: 4)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Variadic Parameters
+//A variadic parameter accepts zero or more values of a specified type. 
+func arithmeticMean(_ numbers: Double...) -&gt; Double {
+    var total: Double = 0
+    for number in numbers {
+        total += number
+    }
+    return total / Double(numbers.count)
+}
+print(arithmeticMean(1, 2, 3, 4, 5))
+print(arithmeticMean(3, 8.25, 18.75))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//In-Out Parameters
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+    return
+}
+
+var someInt = 3
+var anotherInt = 107
+swapTwoInts(&amp;someInt, &amp;anotherInt)
+print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Using Function Types
+func addTwoInts(_ a: Int, _ b: Int) -&gt; Int {
+    return a + b
+}
+func multiplyTwoInts(_ a: Int, _ b: Int) -&gt; Int {
+    return a * b
+}
+
+var mathFunction: (Int, Int) -&gt; Int = addTwoInts
+print("Result: \(mathFunction(2, 3))")
+
+mathFunction = multiplyTwoInts
+print("Result: \(mathFunction(2, 3))")
+
+
+
+
+
+
+
+
+
+
+
+
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 3427}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{0, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>

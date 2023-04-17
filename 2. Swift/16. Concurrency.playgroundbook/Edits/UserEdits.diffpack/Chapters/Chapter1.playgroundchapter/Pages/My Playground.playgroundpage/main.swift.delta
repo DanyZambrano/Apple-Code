@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/****************************************************************************
+ Concurrency
+ 
+ Swift has built-in support for writing asynchronous and parallel code in a 
+ structured way. Asynchronous code can be suspended and resumed later, 
+ although only one piece of the program executes at a time.
+ 
+ El adjetivo concurrente se utiliza para calificar a aquel o aquello que concurre: 
+ que se junta o coincide con otro u otros en el mismo sitio y/o momento. 
+ Concurrir también puede referirse a la contribución de una cierta cantidad para un fin.
+ 
+ Esto nos permite interactuar con la interfaz de usuario mientras la 
+ aplicación realiza tareas en segundo plano
+ 
+ async and await
+ ****************************************************************************/
+listPhotos(inGallery: "Summer Vacation") { photoNames in
+    let sortedNames = photoNames.sorted()
+    let name = sortedNames[0]
+    downloadPhoto(named: name) { photo in
+        show(photo)
+    }
+}
+
+
+
+
+
+
+
+/*   Defining and Calling Asynchronous Functions
+
+ An asynchronous function or asynchronous method is a special kind of function 
+ or method that can be suspended while it’s partway through execution.
+ This is in contrast to ordinary, synchronous functions and methods, 
+ which either run to completion, throw an error, or never return. 
+ An asynchronous function or method still does one of those three things,
+ but it can also pause in the middle when it’s waiting for something. 
+ Inside the body of an asynchronous function or method, you mark each of 
+ these places where execution can be suspended.
+
+ */
+
+func listPhotos(inGallery name: String) async -&gt; [String] {
+    let result = // ... some asynchronous networking code ...
+    return result
+}
+
+
+let photoNames = await listPhotos(inGallery: "Summer Vacation")
+let sortedNames = photoNames.sorted()
+let name = sortedNames[0]
+let photo = await downloadPhoto(named: name)
+show(photo)
+
+
+
+let firstPhoto = await downloadPhoto(named: photoNames[0])
+let secondPhoto = await downloadPhoto(named: photoNames[1])
+let thirdPhoto = await downloadPhoto(named: photoNames[2])
+
+let photos = [firstPhoto, secondPhoto, thirdPhoto]
+show(photos)
+
+
+
+
+
+
+/*  Tasks and Task Groups
+ 
+ A task is a unit of work that can be run asynchronously 
+ as part of your program. All asynchronous code runs as part
+ of some task. The async-let syntax described in the previous 
+ section creates a child task for you. You can also create a 
+ task group and add child tasks to that group, which gives 
+ you more control over priority and cancellation, and lets you
+ create a dynamic number of tasks.*/
+
+
+await withTaskGroup(of: Data.self) { taskGroup in
+    let photoNames = await listPhotos(inGallery: "Summer Vacation")
+    for name in photoNames {
+        taskGroup.addTask { await downloadPhoto(named: name) }
+    }
+}
+
+
+
+
+/*   Task Cancellation
+ 
+ Task.cancel()
+ Task.checkCancellation()
+ Task.isCancelled
+ */
+  
+ 
+ 
+ 
+ 
+ /*    Actor
+ Actors in Swift are not new: they’re inspired by the Actor Model 
+ that treats actors as the universal primitives of concurrent computation 
+ 
+ Data races occur when the same memory is accessed from multiple threads 
+ without synchronization, and at least one access is a write. Data Races 
+ can lead to unpredictable behavior, memory corruption, flaky tests, and weird crashes. 
+ 
+ */
+
+
+actor TemperatureLogger {
+    let label: String
+    var measurements: [Int]
+    private(set) var max: Int
+    
+    init(label: String, measurement: Int) {
+        self.label = label
+        self.measurements = [measurement]
+        self.max = measurement
+    }
+}
+
+
+let logger = TemperatureLogger(label: "Outdoors", measurement: 25)
+print(logger.max)  // Error
+print(await logger.max)
+
+
+
+
+extension TemperatureLogger {
+    func update(with measurement: Int) {
+        measurements.append(measurement)
+        if measurement &gt; max {
+            max = measurement
+        }
+    }
+}
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 3899}</string>
+			<key>OriginalContent</key>
+			<string>
+</string>
+			<key>OriginalRange</key>
+			<string>{0, 1}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>

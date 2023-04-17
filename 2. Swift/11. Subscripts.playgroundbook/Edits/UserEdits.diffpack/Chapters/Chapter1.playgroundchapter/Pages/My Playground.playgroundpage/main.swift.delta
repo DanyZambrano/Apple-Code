@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/****************************************************************************
+ Subscripts
+ 
+ Classes, structures, and enumerations can define subscripts, which are shortcuts
+ for accessing the member elements of a collection, list, or sequence. 
+ You use subscripts to set and retrieve values by index without needing separate 
+ methods for setting and retrieval. For example, you access elements in an Array
+ instance as someArray[index] and elements in a Dictionary instance as someDictionary[key].
+ 
+ 
+ subscript(index: Int) -&gt; Int {
+ get {
+ // Return an appropriate subscript value here.
+ }
+ set(newValue) {
+ // Perform a suitable setting action here.
+ }
+ }
+ 
+ ****************************************************************************/
+
+struct TimesTable {
+    let multiplier: Int
+    subscript(index: Int) -&gt; Int {
+        return multiplier * index
+    }
+}
+
+let threeTimesTable = TimesTable(multiplier: 3)
+print("six times three is \(threeTimesTable[6])")
+print("six times three is \(threeTimesTable[2])")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*    Subscript Usage
+ The exact meaning of “subscript” depends on the context in which it’s used. 
+ Subscripts are typically used as a shortcut for accessing the member elements
+ in a collection, list, or sequence. You are free to implement subscripts in 
+ the most appropriate way for your particular class or structure’s functionality.
+ 
+ For example, Swift’s Dictionary type implements a subscript to set and retrieve
+ the values stored in a Dictionary instance.
+ */
+
+var numberOfLegs = ["spider": 8, "ant": 6, "cat": 4]
+numberOfLegs["bird"] = 2
+print(numberOfLegs)
+
+
+struct Matrix {
+    let rows: Int, columns: Int
+    var grid: [Double]
+    init(rows: Int, columns: Int) {
+        self.rows = rows
+        self.columns = columns
+        grid = Array(repeating: 0.0, count: rows * columns)
+    }
+    func indexIsValid(row: Int, column: Int) -&gt; Bool {
+        return row &gt;= 0 &amp;&amp; row &lt; rows &amp;&amp; column &gt;= 0 &amp;&amp; column &lt; columns
+    }
+    subscript(row: Int, column: Int) -&gt; Double {
+        get {
+            assert(indexIsValid(row: row, column: column), "Index out of range")
+            return grid[(row * columns) + column]
+        }
+        set {
+            assert(indexIsValid(row: row, column: column), "Index out of range")
+            grid[(row * columns) + column] = newValue
+        }
+    }
+}
+
+var matrix = Matrix(rows: 2, columns: 2)
+matrix[0, 1] = 1.5
+matrix[1, 0] = 3.2
+
+
+
+
+
+
+
+
+
+
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 2431}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{0, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/****************************************************************************
+ Properties
+ 
+ Properties associate values with a particular class, structure, or enumeration. 
+ Stored properties store constant and variable values as part of an instance, 
+ whereas computed properties calculate (rather than store) a value. 
+ ****************************************************************************/
+
+struct FixedLengthRange {
+    var firstValue: Int
+    let length: Int
+}
+
+var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3)
+print(rangeOfThreeItems)
+
+rangeOfThreeItems.firstValue = 6
+print(rangeOfThreeItems)
+
+
+var rangeOfFourItems1 = FixedLengthRange(firstValue: 0, length: 4)
+rangeOfFourItems1.firstValue = 6
+print(rangeOfFourItems1)
+
+
+
+
+
+/*   The self Property
+ Every instance of a type has an implicit property called self, 
+ which is exactly equivalent to the instance itself. You use the 
+ self property to refer to the current instance within its own instance methods. 
+ 
+ In practice, you don’t need to write self in your code very often. 
+ If you don’t explicitly write self, Swift assumes that you are referring 
+ to a property or method of the current instance whenever you use a known 
+ property or method name within a method.
+ 
+ */
+ 
+
+class Counter {
+    var count = 0
+    func increment() {
+        count += 1
+    }
+    func increment(by amount: Int) {
+        self.count += 1
+    }
+    func reset() {
+        count = 0
+    }
+}
+
+
+
+
+
+
+
+
+
+/*   Lazy
+ A lazy stored property is a property whose initial value 
+ isn’t calculated until the first time it’s used. 
+ 
+ The lazy property is marked as lazy var. 
+ You can't make it lazy let because lazy properties must always be variables.
+ 
+ Remember, the point of lazy properties is that they are computed only when
+ they are first needed, after which their value is saved.
+ 
+ No creas algo hasta que lo necesites.
+ 
+ En lo que respecta a la seguridad del hilo, 
+ lazy var no son seguros para subprocesos en Swift.
+ */
+
+class DataImporter {
+    var filename = "data.txt"
+}
+
+class DataManager {
+    lazy var importer = DataImporter()
+    var data: [String] = []
+}
+
+let manager = DataManager()
+manager.data.append("Some data")
+manager.data.append("Some more data")
+
+print(manager.data)
+print(manager.importer.filename)
+
+
+
+
+
+
+func fibonacci(of num: Int) -&gt; Int {
+    if num &lt; 2 {
+        return num
+    } else {
+        return fibonacci(of: num - 1) + fibonacci(of: num - 2)
+    }
+}
+
+struct Person {
+    var age = 16
+    
+    lazy var fibonacciOfAge: Int = {
+        fibonacci(of: self.age)
+    }()
+    
+    func fibonacci(of num: Int) -&gt; Int {
+        if num &lt; 2 {
+            return num
+        } else {
+            return fibonacci(of: num - 1) + fibonacci(of: num - 2)
+        }
+    }
+}
+
+var singer = Person()
+print(singer.fibonacciOfAge)
+
+
+
+
+
+class Test {
+    var name: String
+    lazy var greeting : String = { return "Hello \(self.name)" }()
+    init(name: String) {
+        self.name = name
+    }
+}
+let testObj = Test(name:"Dany")
+testObj.greeting
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Get and Set
+struct Point {
+    var x = 0.0, y = 0.0
+}
+struct Size {
+    var width = 0.0, height = 0.0
+}
+
+struct Rect {
+    var origin = Point()
+    var size = Size()
+    var center: Point {
+        get {
+            let centerX = origin.x + (size.width / 2)
+            let centerY = origin.y + (size.height / 2)
+            return Point(x: centerX, y: centerY)
+        }
+        set {
+            origin.x = newValue.x - (size.width / 2)
+            origin.y = newValue.y - (size.height / 2)
+        }
+    }
+}
+
+var square = Rect(origin: Point(x: 0.0, y: 0.0), size: Size(width: 10.0, height: 10.0))
+let initialSquareCenter = square.center
+square.center = Point(x: 15.0, y: 15.0)
+print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
+
+
+
+
+
+
+
+/*  Property Observers
+ Property observers observe and respond to changes in a property’s value.
+ Property observers are called every time a property’s value is set, 
+ even if the new value is the same as the property’s current value. 
+ 
+ willSet is called just before the value is stored.
+ didSet is called immediately after the new value is stored.
+ */
+
+
+class StepCounter {
+    var totalSteps: Int = 0 {
+        willSet(newTotalSteps) {
+            print("About to set totalSteps to \(newTotalSteps)")
+        }
+        didSet {
+            if totalSteps &gt; oldValue  {
+                print("Added \(totalSteps - oldValue) steps")
+            }
+        }
+    }
+}
+let stepCounter = StepCounter()
+stepCounter.totalSteps = 200
+stepCounter.totalSteps = 360
+stepCounter.totalSteps = 96
+
+
+
+
+
+
+
+
+
+
+
+/*  Property Wrappers
+ A property wrapper adds a layer of separation between code 
+ that manages how a property is stored and the code that defines a property. */
+
+
+@propertyWrapper
+struct TwelveOrLess {
+    private var number = 0
+    var wrappedValue: Int {
+        get { return number }
+        set { number = min(newValue, 12) }
+    }
+}
+
+struct SmallRectangle {
+    @TwelveOrLess var height: Int
+    @TwelveOrLess var width: Int
+}
+
+var rectangle = SmallRectangle()
+print(rectangle.height)
+
+rectangle.height = 10
+print(rectangle.height)
+
+rectangle.height = 24
+print(rectangle.height)
+
+
+
+
+struct SmallRectangle1 {
+    private var _height = TwelveOrLess()
+    private var _width = TwelveOrLess()
+    var height: Int {
+        get { return _height.wrappedValue }
+        set { _height.wrappedValue = newValue }
+    }
+    var width: Int {
+        get { return _width.wrappedValue }
+        set { _width.wrappedValue = newValue }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*   Global and Local Variables
+ Global variables are variables that are defined outside of any function, 
+ method, closure, or type context. Local variables are variables that are
+ defined within a function, method, or closure context. */
+
+var name: String = "Dany"
+func someFunction() {
+    var apellido: String = "Zambrano"
+    print(name)
+}
+someFunction()
+//print(apellido)
+
+
+
+
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 5940}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{0, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>

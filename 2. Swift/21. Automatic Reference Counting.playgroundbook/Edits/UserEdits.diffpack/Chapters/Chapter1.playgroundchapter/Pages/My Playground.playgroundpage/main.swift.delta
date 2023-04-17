@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/****************************************************************************
+ Automatic Reference Counting  (ARC)
+ 
+ 
+ Swift uses Automatic Reference Counting (ARC) to track and manage your app’s 
+ memory usage. In most cases, this means that memory management “just works” 
+ in Swift, and you don’t need to think about memory management yourself. 
+ ARC automatically frees up the memory used by class instances when those
+ instances are no longer needed.
+ 
+ ARC automáticamente libera la memoria usada por las instancias de tus 
+ clases cuando ya no son necesarias.
+ ****************************************************************************/
+
+
+
+/*   How ARC Works
+ 
+ Every time you create a new instance of a class, ARC allocates a chunk of memory 
+ to store information about that instance. This memory holds information about the
+ type of the instance, together with the values of any stored properties associated
+ with that instance.
+ 
+ Additionally, when an instance is no longer needed, ARC frees up the memory used
+ by that instance so that the memory can be used for other purposes instead. 
+ This ensures that class instances don’t take up space in memory when they’re no longer needed.
+ 
+ However, if ARC were to deallocate an instance that was still in use, it would
+ no longer be possible to access that instance’s properties, or call that instance’s methods.
+ Indeed, if you tried to access the instance, your app would most likely crash. */
+
+
+
+
+
+
+
+//ARC in Action
+
+class Person {
+    let name: String
+    init(name: String) {
+        self.name = name
+        print("\(name) is being initialized")
+    }
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+}
+
+
+var reference1: Person?
+var reference2: Person?
+var reference3: Person?
+
+reference1 = Person(name: "John Appleseed")
+
+reference2 = reference1
+reference3 = reference1
+
+
+reference1 = nil
+reference2 = nil
+
+
+/* ARC doesn’t deallocate the Person instance until the third and final strong
+ reference is broken, at which point it’s clear that you are no longer using the Person instance*/
+ reference3 = nil
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Strong Reference Cycles Between Class Instances
+
+class Person1 {
+    let name: String
+    init(name: String) { self.name = name }
+    var apartment: Apartment?
+    deinit { print("\(name) is being deinitialized") }
+}
+
+class Apartment {
+    let unit: String
+    init(unit: String) { self.unit = unit }
+    var tenant: Person1?
+    deinit { print("Apartment \(unit) is being deinitialized") }
+}
+
+
+var john: Person1?
+var unit4A: Apartment?
+
+john = Person1(name: "John creed")
+unit4A = Apartment(unit: "4A")
+
+john!.apartment = unit4A
+unit4A!.tenant = john
+
+john = nil
+unit4A = nil
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*   Weak References
+ 
+ A weak reference is a reference that doesn’t keep a strong hold on the instance
+ it refers to, and so doesn’t stop ARC from disposing of the referenced instance.
+ This behavior prevents the reference from becoming part of a strong reference cycle.
+ You indicate a weak reference by placing the weak keyword before a property or variable declaration.
+ 
+ Because a weak reference doesn’t keep a strong hold on the instance it refers to, 
+ it’s possible for that instance to be deallocated while the weak reference is still
+ referring to it. Therefore, ARC automatically sets a weak reference to nil when the
+ instance that it refers to is deallocated. And, because weak references need to allow
+ their value to be changed to nil at runtime, they’re always declared as variables, 
+ rather than constants, of an optional type.  */
+
+class Person2 {
+    let name: String
+    init(name: String) { self.name = name }
+    var apartment: Apartment2?
+    deinit { print("\(name) is being deinitialized") }
+}
+
+class Apartment2 {
+    let unit: String
+    init(unit: String) { self.unit = unit }
+    weak var tenant: Person2?
+    deinit { print("Apartment \(unit) is being deinitialized") }
+}
+
+
+var john2: Person2?
+var unit4A2: Apartment2?
+
+john2 = Person2(name: "John Appleseed")
+unit4A2 = Apartment2(unit: "4A")
+
+john2!.apartment = unit4A2
+unit4A2!.tenant = john2
+
+john = nil
+
+//The only remaining strong reference to the Apartment instance is from the unit4A variable. 
+//If you break that strong reference, there are no more strong references to the Apartment
+unit4A = nil
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Unowned References
+ like a weak reference, an unowned reference doesn’t keep a strong hold on 
+ the instance it refers to. Unlike a weak reference, however, an unowned reference
+ is used when the other instance has the same lifetime or a longer lifetime.
+ 
+ A efectos prácticos, esto significa que el objeto B siempre va a estar en memoria
+ mientras el objeto A también lo esté.
+ ... Por este motivo, una referencia &lt;strong&gt;unowned&lt;/strong&gt; SIEMPRE se espera
+ que tenga un valor.
+ */
+
+
+class Customer {
+    let name: String
+    var card: CreditCard?
+    init(name: String) {
+        self.name = name
+    }
+    deinit { print("\(name) is being deinitialized") }
+}
+
+class CreditCard {
+    let number: UInt64
+    unowned let customer: Customer
+    init(number: UInt64, customer: Customer) {
+        self.number = number
+        self.customer = customer
+    }
+    deinit { print("Card #\(number) is being deinitialized") }
+}
+
+var john3: Customer?
+john3 = Customer(name: "John Appleseed")
+john3!.card = CreditCard(number: 1234_5678_9012_3456, customer: john3!)
+
+john3 = nil
+
+
+
+
+
+
+
+
+
+
+//Unowned Optional References
+class Department {
+    var name: String
+    var courses: [Course]
+    init(name: String) {
+        self.name = name
+        self.courses = []
+    }
+}
+
+class Course {
+    var name: String
+    unowned var department: Department
+    unowned var nextCourse: Course?
+    init(name: String, in department: Department) {
+        self.name = name
+        self.department = department
+        self.nextCourse = nil
+    }
+}
+
+let department = Department(name: "Horticulture")
+
+let intro = Course(name: "Survey of Plants", in: department)
+let intermediate = Course(name: "Growing Common Herbs", in: department)
+let advanced = Course(name: "Caring for Tropical Plants", in: department)
+
+intro.nextCourse = intermediate
+intermediate.nextCourse = advanced
+department.courses = [intro, intermediate, advanced]
+
+
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 6215}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{0, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>

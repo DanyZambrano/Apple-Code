@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/****************************************************************************
+ Strings and Characters
+ 
+ A string is a series of characters, such as "hello".
+ Swift strings are represented by the String type. 
+ Swift’s String and Character types provide a fast, Unicode-compliant 
+ way to work with text in your code.
+****************************************************************************/
+
+//String Literals
+let someString = "Some string literal value"
+print("someString: \(someString)")
+
+
+//Multiline String Literals
+let quotation = """
+The White Rabbit put on his spectacles.  "Where shall I begin,
+please your Majesty?" he asked.
+    
+   "Begin at the beginning," the King said gravely, "and go on
+till you come to the end; then stop."
+"""
+print(quotation)
+
+
+//Special Characters in String Literals
+/*
+ 
+ 1. The escaped special characters \0 (null character), \\ (backslash),
+ \t (horizontal tab), \n (line feed), \r (carriage return), 
+ \" (double quotation mark) and \' (single quotation mark)
+ 
+ 2. An arbitrary Unicode scalar value, written as \u{n}, 
+ where n is a 1–8 digit hexadecimal number 
+ (Unicode is discussed in Unicode below)
+ 
+ */
+
+
+// "Imagination is more important than knowledge" - Einstein
+let dollarSign = "\u{24}"        // $,  Unicode scalar U+0024
+let blackHeart = "\u{2665}"      // ♥,  Unicode scalar U+2665
+let sparklingHeart = "\u{1F496}" // 💖, Unicode scalar U+1F496
+
+var wiseWords = sparklingHeart + "\"Imagination is more important than knowledge\" - Einstein"
+print(wiseWords)
+
+
+
+//Initializing an Empty String
+var emptyString = ""               // empty string literal
+var anotherEmptyString = String()  // initializer syntax
+var emptyString2 : String = ""
+
+
+
+//String Mutability 
+var variableString = "Horse"
+variableString += " and carriage"
+print(variableString)
+
+
+
+//Working with Characters
+for character in "Dog!🐶" {
+    print(character)
+}
+
+let exclamationMark: Character = "!"
+
+let catCharacters: [Character] = ["C", "a", "t", "!", "🐱"]
+let catString = String(catCharacters)
+print(catString)
+
+
+
+//Concatenating Strings and Characters
+let string1 = "hello"
+let string2 = " there"
+var welcome = string1 + string2
+print("welcome: \(welcome)")
+
+var instruction = "look over"
+instruction += string2
+print("instruction: \(instruction)")
+
+welcome.append(exclamationMark)
+print("welcome: \(welcome)")
+
+
+
+/*
+ String Interpolation
+ String interpolation is a way to construct a new String value from a
+ mix of constants, variables, literals, and expressions by including
+ their values inside a string literal.
+ */
+
+let multiplier = 3
+let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
+print("message: \(message)")
+
+
+
+/*
+ Unicode
+Unicode is an international standard for encoding, representing, 
+and processing text in different writing systems.
+ */
+
+let eAcute: Character = "\u{E9}"                         // é
+let combinedEAcute: Character = "\u{65}\u{301}"          // e followed by ́
+
+let precomposed: Character = "\u{D55C}"                  // 한
+let decomposed: Character = "\u{1112}\u{1161}\u{11AB}"   // ᄒ, ᅡ, ᆫ
+
+let enclosedEAcute: Character = "\u{E9}\u{20DD}" // enclosedEAcute is é⃝
+let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}" // regionalIndicatorForUS is 🇺🇸
+
+
+// Counting Characters
+let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
+print("unusualMenagerie has \(unusualMenagerie.count) characters")
+
+var word = "cafe"
+print("the number of characters in \(word) is \(word.count)")
+
+word += "\u{301}" 
+print("the number of characters in \(word) is \(word.count)")
+
+
+/*
+ String Indices
+Each String value has an associated index type, String.Index, 
+ which corresponds to the position of each Character in the string.
+ */
+
+
+let greeting = "Guten Tag!"
+greeting[greeting.startIndex]                                   //G
+greeting[greeting.index(before: greeting.endIndex)]             //!
+greeting[greeting.index(after: greeting.startIndex)]            //u
+let index = greeting.index(greeting.startIndex, offsetBy: 7)
+greeting[index]                                                 //a
+
+//greeting[greeting.endIndex] // Error
+//greeting.index(after: greeting.endIndex) // Error
+
+for index in greeting.indices {
+    print("\(greeting[index]) ", terminator: "")
+}
+
+var welcome1 = "hello"
+welcome1.insert("!", at: welcome1.endIndex)
+print(welcome1)
+welcome1.insert(contentsOf: " there", at: welcome1.index(before: welcome1.endIndex))
+print(welcome1)
+
+
+welcome1.remove(at: welcome.index(before: welcome.endIndex))
+print(welcome1)
+
+let range = welcome1.index(welcome1.endIndex, offsetBy: -6)..&lt;welcome1.endIndex
+welcome1.removeSubrange(range)
+print(welcome1)
+
+
+//Substrings
+
+let greeting1 = "Hello, world!"
+let index1 = greeting1.firstIndex(of: ",") ?? greeting1.endIndex
+let beginning = greeting1[..&lt;index1]
+print(greeting1)
+print(beginning)
+
+//Comparing Strings
+let quotation2 = "We're a lot alike, you and I."
+let sameQuotation = "We're a lot alike, you and I."
+if quotation2 == sameQuotation {
+    print("These two strings are considered equal")
+}
+
+
+
+//Prefix and Suffix Equality
+let romeoAndJuliet = [
+    "Act 1 Scene 1: Verona, A public place",
+    "Act 1 Scene 2: Capulet's mansion",
+    "Act 1 Scene 3: A room in Capulet's mansion",
+    "Act 1 Scene 4: A street outside Capulet's mansion",
+    "Act 1 Scene 5: The Great Hall in Capulet's mansion",
+    "Act 2 Scene 1: Outside Capulet's mansion",
+    "Act 2 Scene 2: Capulet's orchard",
+    "Act 2 Scene 3: Outside Friar Lawrence's cell",
+    "Act 2 Scene 4: A street in Verona",
+    "Act 2 Scene 5: Capulet's mansion",
+    "Act 2 Scene 6: Friar Lawrence's cell"
+]
+
+var act1SceneCount = 0
+for scene in romeoAndJuliet {
+    if scene.hasPrefix("Act 1 ") {
+        act1SceneCount += 1
+    }
+}
+print("There are \(act1SceneCount) scenes in Act 1")
+
+
+var mansionCount = 0
+var cellCount = 0
+for scene in romeoAndJuliet {
+    if scene.hasSuffix("Capulet's mansion") {
+        mansionCount += 1
+    } else if scene.hasSuffix("Friar Lawrence's cell") {
+        cellCount += 1
+    }
+}
+print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 6100}</string>
+			<key>OriginalContent</key>
+			<string>
+</string>
+			<key>OriginalRange</key>
+			<string>{0, 1}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>

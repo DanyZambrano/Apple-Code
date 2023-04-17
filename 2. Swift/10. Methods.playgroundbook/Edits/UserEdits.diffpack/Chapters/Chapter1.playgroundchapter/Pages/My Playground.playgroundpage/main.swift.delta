@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/****************************************************************************
+ Methods
+ 
+ Methods are functions that are associated with a particular type. Classes, 
+ structures, and enumerations can all define instance methods, which 
+ encapsulate specific tasks and functionality for working with an 
+ instance of a given type
+ 
+ Los métodos son exactamente lo mismo que las funciones a nivel de sintaxis.
+ ****************************************************************************/
+
+class Counter {
+    var count = 0
+    
+    func increment() {
+        count += 1
+    }
+    func increment(by amount: Int) {
+        count += amount
+    }
+    func reset() {
+        count = 0
+    }
+    
+    func intentos() {
+        print("2 intentos")
+    }
+}
+
+let clase = Counter()
+clase.intentos()
+
+
+var edad: String = "hola"
+print(edad.count)
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 834}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{0, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>

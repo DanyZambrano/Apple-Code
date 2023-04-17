@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/****************************************************************************
+ Closure
+ 
+ Closures are self-contained blocks of functionality that can be passed around
+ and used in your code. Closures can capture and store references to any 
+ constants and variables from the context in which they’re defined.
+ 
+ Los closures son funciones anónimas que se pueden guardar en una variable.
+ 
+ Closure Expression Syntax
+ 
+ { (parameters) -&gt; return type in
+ .......statements
+ }
+****************************************************************************/
+
+let names: [String] = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+
+func backward(_ s1: String, _ s2: String) -&gt; Bool {
+    return s1 &gt; s2
+}
+
+
+
+var reversedNames = names.sorted(by: backward)
+print(reversedNames)
+
+
+reversedNames = names.sorted(by: { (s1: String, s2: String) -&gt; Bool in return s1 &gt; s2 } )
+print(reversedNames)
+
+
+reversedNames = names.sorted(by: { s1, s2 in return s1 &gt; s2 } )
+print(reversedNames)
+
+
+reversedNames = names.sorted(by: { s1, s2 in s1 &gt; s2 })
+print(reversedNames)
+
+
+reversedNames = names.sorted(by: { $0 &gt; $1 } )
+print(reversedNames)
+
+
+reversedNames = names.sorted() { $0 &gt; $1 }
+print(reversedNames)
+
+
+reversedNames = names.sorted { $0 &gt; $1 }
+print(reversedNames)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let digitNames = [
+    0: "Zero", 1: "One", 2: "Two",   3: "Three", 4: "Four",
+    5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine"
+]
+let numbers = [16, 58, 0, 510]
+
+let strings = numbers.map { (number) -&gt; String in
+    var number = number
+    var output = ""
+    repeat {
+        output = digitNames[number % 10]! + output
+        number /= 10
+    } while number &gt; 0
+    return output
+}
+
+
+print(strings)
+
+
+
+
+
+
+
+
+
+
+
+//Escaping Closures
+var completionHandlers: [() -&gt; Void] = []
+func someFunctionWithEscapingClosure(completionHandler: @escaping () -&gt; Void) {
+    completionHandlers.append(completionHandler)
+}
+
+func someFunctionWithNonescapingClosure(closure: () -&gt; Void) {
+    closure()
+}
+
+class SomeClass {
+    var x = 11
+    func doSomething() {
+        someFunctionWithEscapingClosure { self.x = 100 }
+        someFunctionWithNonescapingClosure { x = 200 }
+    }
+}
+
+let instance = SomeClass()
+instance.doSomething()
+print(instance.x)
+
+completionHandlers.first?()
+print(instance.x)
+
+
+
+
+
+/* Autoclosures
+An autoclosure is a closure that’s automatically created to wrap an expression that’s being passed as an argument to a function. It doesn’t take any arguments, and when it’s called, it returns the value of the expression that’s wrapped inside of it */
+
+var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+print(customersInLine.count)
+
+let customerProvider = { customersInLine.remove(at: 0) }
+print(customersInLine.count)
+
+print("Now serving \(customerProvider())!")
+print(customersInLine.count)
+
+
+
+func serve(customer customerProvider: () -&gt; String) {
+    print("Now serving \(customerProvider())!")
+}
+serve(customer: { customersInLine.remove(at: 0) } )
+
+
+
+var customerProviders: [() -&gt; String] = []
+func collectCustomerProviders(_ customerProvider: @autoclosure @escaping () -&gt; String) {
+    customerProviders.append(customerProvider)
+}
+collectCustomerProviders(customersInLine.remove(at: 0))
+collectCustomerProviders(customersInLine.remove(at: 0))
+
+print("Collected \(customerProviders.count) closures.")
+
+for customerProvider in customerProviders {
+    print("Now serving \(customerProvider())!")
+}
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 3389}</string>
+			<key>OriginalContent</key>
+			<string>
+</string>
+			<key>OriginalRange</key>
+			<string>{0, 1}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>

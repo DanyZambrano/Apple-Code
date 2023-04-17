@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/****************************************************************************
+ Access Control
+ 
+ Access control restricts access to parts of your code from code in other source
+ files and modules. This feature enables you to hide the implementation details
+ of your code, and to specify a preferred interface through which that code can
+ be accessed and used.
+
+ 
+ Access Levels
+ 
+ Open access and public access enable entities to be used within any source 
+ file from their defining module, and also in a source file from another module 
+ that imports the defining module. You typically use open or public access when
+ specifying the public interface to a framework. The difference between open and
+ public access is described below.
+ 
+ Internal access enables entities to be used within any source file from their
+ defining module, but not in any source file outside of that module. You typically
+ use internal access when defining an app’s or a framework’s internal structure.
+ 
+ File-private access restricts the use of an entity to its own defining source
+ file. Use file-private access to hide the implementation details of a specific
+ piece of functionality when those details are used within an entire file.
+ 
+ Private access restricts the use of an entity to the enclosing declaration, 
+ and to extensions of that declaration that are in the same file. Use private access
+ to hide the implementation details of a specific piece of functionality when 
+ those details are used only within a single declaration.
+ ****************************************************************************/
+
+
+public class SomePublicClass {}
+internal class SomeInternalClass {}
+fileprivate class SomeFilePrivateClass {}
+private class SomePrivateClass {}
+
+public var somePublicVariable = 0
+internal let someInternalConstant = 0
+fileprivate func someFilePrivateFunction() {}
+private func somePrivateFunction() {}
+
+
+
+
+
+class SomeInternalClass1 {}              // implicitly internal
+let someInternalConstant1 = 0            // implicitly internal
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Custom Types
+public class SomePublicClass2 {                  // explicitly public class
+    public var somePublicProperty = 0            // explicitly public class member
+    var someInternalProperty = 0                 // implicitly internal class member
+    fileprivate func someFilePrivateMethod() {}  // explicitly file-private class member
+    private func somePrivateMethod() {}          // explicitly private class member
+}
+
+class SomeInternalClass2 {                       // implicitly internal class
+    var someInternalProperty = 0                 // implicitly internal class member
+    fileprivate func someFilePrivateMethod() {}  // explicitly file-private class member
+    private func somePrivateMethod() {}          // explicitly private class member
+}
+
+fileprivate class SomeFilePrivateClass2 {        // explicitly file-private class
+    func someFilePrivateMethod() {}              // implicitly file-private class member
+    private func somePrivateMethod() {}          // explicitly private class member
+}
+
+private class SomePrivateClass2 {                // explicitly private class
+    func somePrivateMethod() {}                  // implicitly private class member
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Subclassing (In this case Internal is a superclass)
+
+public class A {
+    fileprivate func someMethod() {}
+}
+
+internal class B: A {
+    override internal func someMethod() {}
+}
+
+
+
+
+
+public class A1 {
+    fileprivate func someMethod() {}
+}
+
+internal class B1: A1 {
+    override internal func someMethod() {
+        super.someMethod()
+    }
+}
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 3601}</string>
+			<key>OriginalContent</key>
+			<string>
+</string>
+			<key>OriginalRange</key>
+			<string>{0, 1}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
