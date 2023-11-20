@@ -1,9 +1,3 @@
-//
-//  ContentView.swift
-//  Stacks View
-//
-//  Created by Dany Zambrano on 16/8/23.
-//
 
 import SwiftUI
 

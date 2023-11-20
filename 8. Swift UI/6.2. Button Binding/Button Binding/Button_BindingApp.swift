@@ -2,7 +2,7 @@
 import SwiftUI
 
 @main
-struct Stacks_ViewApp: App {
+struct Button_BindingApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
